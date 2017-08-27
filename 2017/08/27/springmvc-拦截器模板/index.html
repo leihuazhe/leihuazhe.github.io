@@ -6,14 +6,18 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Archives: 2017/8 | 枫叶|博客</title>
+  <title>springmvc 拦截器模板 | 枫叶|博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="枫叶|博客">
-<meta property="og:url" content="http://yoursite.com/archives/2017/08/index.html">
+  <meta name="description" content="关键点：’springmvc拦截器﻿‘ ####需求﻿ 我们用jquery ajax 请求 后台 用spring 拦截session 过期  ######1. 过期则跳转指定页面 怎么弄呀    ######2.session的时候  ajax 有时候也会走error 方法 这个怎么写好呢 ﻿ ﻿ ﻿ ﻿ 我们先了解一下一些必要的信息。ajax 请求和普通的 http 请求是不一样的，Ajax请求">
+<meta property="og:type" content="article">
+<meta property="og:title" content="springmvc 拦截器模板">
+<meta property="og:url" content="http://yoursite.com/2017/08/27/springmvc-拦截器模板/index.html">
 <meta property="og:site_name" content="枫叶|博客">
+<meta property="og:description" content="关键点：’springmvc拦截器﻿‘ ####需求﻿ 我们用jquery ajax 请求 后台 用spring 拦截session 过期  ######1. 过期则跳转指定页面 怎么弄呀    ######2.session的时候  ajax 有时候也会走error 方法 这个怎么写好呢 ﻿ ﻿ ﻿ ﻿ 我们先了解一下一些必要的信息。ajax 请求和普通的 http 请求是不一样的，Ajax请求">
+<meta property="og:updated_time" content="2017-08-27T06:37:23.569Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="枫叶|博客">
+<meta name="twitter:title" content="springmvc 拦截器模板">
+<meta name="twitter:description" content="关键点：’springmvc拦截器﻿‘ ####需求﻿ 我们用jquery ajax 请求 后台 用spring 拦截session 过期  ######1. 过期则跳转指定页面 怎么弄呀    ######2.session的时候  ajax 有时候也会走error 方法 这个怎么写好呢 ﻿ ﻿ ﻿ ﻿ 我们先了解一下一些必要的信息。ajax 请求和普通的 http 请求是不一样的，Ajax请求">
   
     <link rel="alternative" href="/atom.xml" title="枫叶|博客" type="application/atom+xml">
   
@@ -149,76 +153,180 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
+            <article id="post-springmvc-拦截器模板" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
   
+    <h1 class="article-title" itemprop="name">
+      springmvc 拦截器模板
+    </h1>
   
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2017" class="archive-year">2017</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/08/27/springmvc-拦截器模板/" class="archive-article-date">
+
+        
+        <a href="/2017/08/27/springmvc-拦截器模板/" class="archive-article-date">
   	<time datetime="2017-08-27T06:36:51.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-08-27</time>
 </a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/08/27/springmvc-拦截器模板/">springmvc 拦截器模板</a>
-    </h1>
-  
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>关键点：’springmvc拦截器﻿‘</p>
+<p>####需求﻿</p>
+<p>我们用jquery ajax 请求 后台 用spring 拦截session 过期 </p>
+<p>######1. 过期则跳转指定页面 怎么弄呀   </p>
+<p>######2.session的时候  ajax 有时候也会走error 方法 这个怎么写好呢 ﻿</p>
+<p>﻿</p>
+<p>﻿</p>
+<p>﻿</p>
+<p>我们先了解一下一些必要的信息。ajax 请求和普通的 http 请求是不一样的，Ajax请求是XMLHTTPRequest对象发起的，而http请求是浏览器发起的。﻿</p>
+<p>二者不同地方体现在HTTP请求的头信息中。﻿</p>
+<p>AJAX请求头中带有X-Requested-With信息，其值为XMLHttpRequest。而普通请求是没有的。﻿</p>
+<p>﻿﻿﻿﻿﻿﻿﻿﻿﻿</p>
+<p>﻿</p>
+<p>在拦截器中进行配置：﻿</p>
+<hr>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div></pre></td><td class="code"><pre><div class="line">public boolean preHandle(HttpServletRequest request,﻿</div><div class="line"></div><div class="line">HttpServletResponse response, Object handler) throws Exception &#123;﻿</div><div class="line"></div><div class="line">﻿</div><div class="line">Oper oper =   (Oper)request.getSession().getAttribute(Const.SESSION_LOGIN_ADMIN_USER);﻿</div><div class="line"></div><div class="line">﻿</div><div class="line">String requestCTX = urlPathHelper.getContextPath(request);﻿</div><div class="line"></div><div class="line">System.out.println(requestCTX);﻿</div><div class="line"></div><div class="line">String requestUri = request.getRequestURI(); //请求完整路径，可用于登陆后跳转﻿</div><div class="line"></div><div class="line">String contextPath = request.getContextPath();  //项目下完整路径﻿</div><div class="line"></div><div class="line">String url = requestUri.substring(contextPath.length()); //请求页面﻿</div><div class="line"></div><div class="line">logger.debug(&quot;======拦截器配置成功======&quot;);﻿</div><div class="line"></div><div class="line">logger.debug(&quot;======拦截来自：&quot;+requestUri+&quot;的请求=======&quot;);﻿</div><div class="line"></div><div class="line">logger.debug(&quot;======拦截的页面路径是：==：&quot;+url+&quot;=======&quot;);﻿</div><div class="line"></div><div class="line">//throw new Exception(&quot;登录超时!&quot;);﻿</div><div class="line"></div><div class="line">﻿</div><div class="line">if(oper == null)&#123;//如果获取不到登录的session  ﻿</div><div class="line"></div><div class="line">//如果是ajax请求﻿</div><div class="line"></div><div class="line">if (request.getHeader(&quot;x-requested-with&quot;) != null﻿</div><div class="line"></div><div class="line">&amp;&amp;﻿</div><div class="line"></div><div class="line">request.getHeader(&quot;x-requested-with&quot;).equalsIgnoreCase(&quot;XMLHttpRequest&quot;))&#123;﻿</div><div class="line"></div><div class="line">response.setHeader(&quot;sessionstatus&quot;, &quot;timeout&quot;); // 响应头设置session状态﻿</div><div class="line"></div><div class="line">return false;  //session超时，ajax访问返回false﻿</div><div class="line"></div><div class="line">&#125;﻿</div><div class="line"></div><div class="line">&#125;﻿</div><div class="line"></div><div class="line">﻿</div><div class="line">return super.preHandle(request, response, handler);﻿</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>判断，如果session过期的话，进行上述设置﻿</p>
+<p>然后再前端页面主js文件中进行统一设置，﻿</p>
+<p>有了配置文件，也有了拦截器，在拦截器中已经设置了返回的信息，而这些信息会被 JavaScript 获取到。﻿</p>
+<p>﻿</p>
+<p>$.ajaxSetup方法是来设置AJAX请求默认选项的，﻿</p>
+<p>我们可以认为是全局的选项设置，因此可以将这段代码提到外部js文件中，在需要的页面﻿</p>
+<hr>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div></pre></td><td class="code"><pre><div class="line">$.ajaxSetup(&#123;﻿</div><div class="line"></div><div class="line">type: <span class="string">'POST'</span>,﻿</div><div class="line"></div><div class="line">contentType:<span class="string">"application/x-www-form-urlencoded;charset=utf-8"</span>,﻿</div><div class="line"></div><div class="line">complete: function(xhr,status) &#123;﻿</div><div class="line"></div><div class="line">var sessionStatus = xhr.getResponseHeader(<span class="string">'sessionstatus'</span>);﻿</div><div class="line"></div><div class="line"><span class="keyword">if</span>(sessionStatus == <span class="string">'timeout'</span>) &#123;﻿</div><div class="line"></div><div class="line"><span class="comment">//var top = getTopWinow();﻿</span></div><div class="line"></div><div class="line"><span class="comment">//var yes = confirm('由于您长时间没有操作, session已过期, 请重新登录.');﻿</span></div><div class="line"></div><div class="line"><span class="comment">//if (yes) &#123;﻿</span></div><div class="line"></div><div class="line">alert(<span class="string">"登录超时,请重新登录！"</span>);﻿</div><div class="line"></div><div class="line">window.location.href = <span class="string">'/admin/login/out.do'</span>;﻿</div><div class="line"></div><div class="line"><span class="comment">//&#125;﻿</span></div><div class="line"></div><div class="line">&#125;﻿</div><div class="line"></div><div class="line">&#125;﻿</div><div class="line"></div><div class="line">&#125;);﻿</div><div class="line"></div><div class="line"><span class="comment">/**﻿</span></div><div class="line"><span class="comment"></span></div><div class="line"><span class="comment">* 在页面中任何嵌套层次的窗口中获取顶层窗口﻿</span></div><div class="line"><span class="comment"></span></div><div class="line"><span class="comment">* <span class="doctag">@return</span> 当前页面的顶层窗口对象﻿</span></div><div class="line"><span class="comment"></span></div><div class="line"><span class="comment">*/</span>﻿</div><div class="line"></div><div class="line"><span class="function">function <span class="title">getTopWinow</span><span class="params">()</span></span>&#123;﻿</div><div class="line"></div><div class="line">var p = window;﻿</div><div class="line"></div><div class="line"><span class="keyword">while</span>(p != p.parent)&#123;﻿</div><div class="line"></div><div class="line">p = p.parent;﻿</div><div class="line"></div><div class="line">&#125;﻿</div><div class="line"></div><div class="line"><span class="keyword">return</span> p;﻿</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<hr>
+<p>本章完</p>
+<p>﻿</p>
 
-        <div class="article-info info-on-right">
-          
-          
+      
 
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://yoursite.com/2017/08/27/springmvc-拦截器模板/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/08/27/hello-world/" class="archive-article-date">
-  	<time datetime="2017-08-27T05:04:21.468Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-08-27</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2017/08/27/hello-world/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Hello World</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
+        
+        
+    </div>
+</aside>
+
+
+
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/08/27/hello-world/">Hello World</a>
-    </h1>
+  
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
   
 
-    
+  
 
 
           </div>
@@ -241,8 +349,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
