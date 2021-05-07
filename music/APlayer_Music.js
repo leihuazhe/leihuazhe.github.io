@@ -13,17 +13,17 @@ const ap = new APlayer({
   lrcType: 0,             <!-- 歌词类型，0表示不显示歌词-->
   audio: [
     {
-      name: 'River Flows in You',              //<!-- 歌曲名称-->
-      artist: 'Yiruma',                   //<!-- 歌曲作者-->
-      url: '/music/Yiruma - River Flows in You.mp3',    //<!-- 歌曲路径-->
-      cover: '/music/river_flows_in_you.png',  //<!-- 歌曲封面图片-->
-      theme: '#46718b'                    //<!-- 选中歌曲的主题-->
-    },
-    {
       name: 'Dance Dont Delay',              //<!-- 歌曲名称-->
       artist: 'Twin Musicom',                   //<!-- 歌曲作者-->
       url: '/music/Twin Musicom - Dance Dont Delay.mp3',    //<!-- 歌曲路径-->
       cover: '/music/dance_dont_delay.jpg',  //<!-- 歌曲封面图片-->
+      theme: '#46718b'                   //<!-- 选中歌曲的主题-->
+    },
+    {
+      name: 'River Flows in You',              //<!-- 歌曲名称-->
+      artist: 'Yiruma',                   //<!-- 歌曲作者-->
+      url: '/music/Yiruma - River Flows in You.mp3',    //<!-- 歌曲路径-->
+      cover: '/music/river_flows_in_you.png',  //<!-- 歌曲封面图片-->
       theme: '#46718b'                    //<!-- 选中歌曲的主题-->
     }
     //,
